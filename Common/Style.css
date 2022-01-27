@@ -1,0 +1,140 @@
+:root{/* Mettere -- davanti ai nomi delle "variabili" */
+    --Main_BG_Color: #0080FF;
+    --white: aliceblue;
+    --pink: deeppink;
+}
+
+*{
+/* È buona norma fare questo come prima cosa perché ci da pieno controllo di come posizioniamo ogni oggetto*/  
+    margin: 0px;
+    border: 0px;
+    box-sizing: 0px;
+}
+
+body{
+    background-color: var(--Main_BG_Color);
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.4;
+}
+
+.Container{
+   /* border: 1px dashed white;*/
+    width: 600px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    margin: 50px auto;
+}
+
+img{
+    max-width: 100%;/* questo fa si che le immagini non siano mai più grandi del contenitore*/
+}
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+a{
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--pink);
+}
+
+h2{
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: var(--white);
+}
+
+h2:hover{
+    cursor:default;
+}
+
+textarea{
+    background-color: var(--Main_BG_Color);
+    color: var(--white);
+    resize: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    width: 240px;
+    outline: none;
+}
+
+/* STRUTTURA PAGINE GIOCHI */
+
+.Board{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.Game-Area{
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 12px;
+}
+
+.Game-Data{
+    padding: 12px; 
+    width: 240px;
+    /* border: 1px dashed white; */
+}
+.Game-Score{
+    padding: 12px; 
+    width: 240px;
+    /* border: 1px dashed white; */
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--white);
+}
+p{
+    font-size: 12px;
+    margin-bottom: 12px;
+    color: var(--white);
+}
+/* Winnign message*/
+
+#Grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;  
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.messageContainer{
+    position: absolute;
+    left:0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--pink);
+}
+
+.message{
+    font-size: 30px;
+    color: var(--white);
+}
+
+#NewGame:hover{
+    cursor: pointer;
+}
+#Reset:hover{
+    cursor: pointer;
+}
