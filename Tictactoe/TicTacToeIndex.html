@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gab's Tic Tac Toe </title> <!--Il titolo che va nella tab del browser -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../Common/Style.css">
+    <link rel="stylesheet" href="TicTacToeStyle.css">
+</head>
+<body>
+    <div class="Container">Tic Tac Toe</div>
+    <div class="Board">
+        <div class="Game-Data">
+            <h1>Rules:</h1>
+            <h1>Line up three equal symbols, horizontally, vertically or diagonally to win the game!<br>The player with the X sign will be the first to play.</h1>
+        </div>    
+        <div class="Game-Area">
+            <div id="Grid"> 
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+                <div class="Cell"></div>
+            </div>
+            <div id="mesCon" class="messageContainer">Welcome!</div>
+        </div> 
+        <div class="Game-Score">
+            <h2>Score:</h2>
+            <br>
+            <textarea class="Text" maxlength="12">Insert name</textarea>
+            <h2 class="Player"></h2>
+            <br>
+            <textarea class="Text" maxlength="12">Insert name</textarea>
+            <h2 class="Player"></h2>
+            <br>
+            <h2 id="NewGame">Start Game</h2>
+            <br>
+            <h2 id="Reset">Reset Score</h2>
+        </div>    
+    </div>
+    <script src="../Common/ScriptCommon.js"></script>
+    <script src="TicTacToe.js"> </script>
+</body>
+</html>
