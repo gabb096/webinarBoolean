@@ -87,13 +87,17 @@ textarea{
 
 .Game-Data{
     padding: 12px; 
-    width: 240px;
-    /* border: 1px dashed white; */
+    max-width: 240px;
+    /* border: 1px dashed white;  */
 }
 .Game-Score{
     padding: 12px; 
-    width: 240px;
+    max-width: 240px;
     /* border: 1px dashed white; */
+}
+
+textarea{
+    width: 180px;
 }
 
 h1{

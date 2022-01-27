@@ -17,10 +17,6 @@ h1{
     flex-wrap: wrap;
 }
 
-textarea{
-    width: 180px;
-}
-
 .Game-Data{
     width: 190px;
 }
