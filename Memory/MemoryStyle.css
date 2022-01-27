@@ -1,0 +1,67 @@
+:root{
+    --card_size: 100px;
+    --grid_color: rgba(100,100,100,0.4);
+}
+
+h1{
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+#Grid{
+    height: calc( var(--card_size) *4);
+    width: calc( var(--card_size)*8);
+    background-color: var(--grid_color);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+textarea{
+    width: 180px;
+}
+
+.Game-Data{
+    width: 190px;
+}
+.Game-Score{
+    width: 190px;
+}
+
+.Card{
+    width: var(--card_size);
+    height: var(--card_size);
+    background-image: url("./images/back.png");
+    background-repeat: none;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.alien{
+    background-image: url("./images/alien.png");
+}
+.bug{
+    background-image: url("./images/bug.png");
+}
+.duck{
+    background-image: url("./images/duck.png");
+}
+.rocket{
+    background-image: url("./images/rocket.png");
+}
+.spaceship{
+    background-image: url("./images/spaceship.png");
+}
+.tiktac{
+    background-image: url("./images/tiktac.png");
+}
+
+.messageContainer{
+    top: calc( var(--card_size)*1.5);
+    bottom: calc( var(--card_size)*1.5);
+    color: aliceblue;
+}
+
+.messCon{
+    font-size: 40px;
+}
