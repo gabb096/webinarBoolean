@@ -57,8 +57,8 @@ bug1.addEventListener("click", function()
     if(timeLeft>0)
     {   
         setTimeout(() => {
-            // bug1.style.bottom = `${Math.floor(Math.random()*gameAreaHeight)}px`;
-            // bug1.style.left = `${Math.floor(Math.random()*gameAreaWidth)}px`;
+            bug1.style.bottom = `${Math.floor(Math.random()*gameAreaHeight)}px`;
+            bug1.style.left = `${Math.floor(Math.random()*gameAreaWidth)}px`;
             Timer(1);
             BugFlag=1;
             if(bug1.classList.contains(`Hit`))
@@ -77,15 +77,3 @@ function Timer(bool)
     else
         clearInterval(a);
 }
-
-let t = setInterval(() => {
-    if(timeLeft)
-        timeLeft--;
-    else
-    {
-        clearInterval(t);
-        Timer(0);
-    }    
-    console.log(`${timeLeft}`);
-}, 1000);
-
