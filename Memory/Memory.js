@@ -87,10 +87,7 @@ Reset.addEventListener("click", function()
     newGame();
 });
 
-function shuffleDeck() {
-    for(let i=0; i<row; i++) // shuffle the cards
-        deck.sort( function(){ return 0.5 - Math.random(); } );
-}
+function shuffleDeck() {  deck.sort( function(){ return Math.round(0.5 - Math.random()); } ); }
 
 function placeNewCards(){
     
