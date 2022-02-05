@@ -1,11 +1,15 @@
 /*=================== DOM =================== */
-const Texts = document.querySelectorAll(".Text");
-const PlayerStatus = document.querySelectorAll(".Player");
-const GameArea = document.querySelector(".Game-Area");
-const NewGame = document.getElementById("NewGame");
-const Grid = document.getElementById(`Grid`);
+const DOM_Texts = document.querySelectorAll(".Text");
+const DOM_PlayerStatus = document.querySelectorAll(".Player");
+const DOM_GameArea = document.querySelector(".Game-Area");
+const DOM_NewGame = document.getElementById("NewGame");
+const DOM_Grid = document.getElementById(`Grid`);
 
-class player 
+let GameStartedFlag = 0; //control if the game has started or not
+let msgFlag = 1; // control if the message is on screen
+
+
+class playerClass 
 {
     constructor(name, sign, score)
     {
@@ -22,12 +26,11 @@ class player
     }
 }
 
-function updateScreenScore(Players)
+function updateScreenScore(P)
 {
-    for(let i=0; i<Players.length; i++)
-        PlayerStatus[i].innerText = `Points = ${Players[i].score}`; 
+    for(let i=0; i<P.length; i++)
+        DOM_PlayerStatus[i].innerText = `Points : ${P[i].score}`; 
 }
-
 
 function showWinner(wName) // it creates a div element that will show the winner's name
 {
@@ -40,7 +43,7 @@ function showWinner(wName) // it creates a div element that will show the winner
 
     newDiv.classList.add("messageContainer");
     newDiv.id = "mesCon";
-    GameArea.appendChild(newDiv);
+    DOM_GameArea.appendChild(newDiv);
     msgFlag = 1;
 }
 
@@ -49,4 +52,23 @@ function removeMessage()
     const mesCon = document.getElementById("mesCon");
     mesCon.parentNode.removeChild(mesCon);
     msgFlag = 0;
+}
+
+function showGenericMessage( string )
+{
+    if(DOM_GameArea.classList.contains("messageContainer") || msgFlag)
+        removeMessage();
+
+    let newDiv = document.createElement("div");
+    newDiv.innerText = string;
+    newDiv.classList.add("messageContainer");
+    newDiv.id = "mesCon";
+    DOM_GameArea.appendChild(newDiv);
+    msgFlag = 1;
+}
+
+function showGenericTimeMessage(string, milliseconds)
+{   
+    showGenericMessage(string);
+    setTimeout(() => {  removeMessage();   }, milliseconds);
 }

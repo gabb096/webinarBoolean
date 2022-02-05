@@ -1,27 +1,25 @@
-const Cells = document.querySelectorAll(".Cell");
+const DOM_Cells = document.querySelectorAll(".Cell");
 
-let players = [ new player("P1", "X", 0), new player("P2", "O", 0) ];
-
+let players = [ new playerClass("P1", "X", 0), new playerClass("P2", "O", 0) ];
 let turn = 0;
 let numPlay = 0;
 let cellSign = [];
-let flag = 0; //this flag control if the game has started or not
-let msgFlag = 1; //this flag control if the message is on screen
 
-for(let i=0; i<Cells.length; i++)
+
+for(let i=0; i<DOM_Cells.length; i++)
 {
-    let cell = Cells[i];
+    let cell = DOM_Cells[i];
 
     cell.addEventListener("click", function()
     {
-        if(cellSign[i]) //check if the cell is already been used
+        if(cellSign[i]) //Check if the cell is already been used
             return;
 
-        if(turn<10 && flag)
+        if(turn<10 && GameStartedFlag)
         {   
             turn++;
 
-            let k = (turn + numPlay) % 2 // keeps track of players turn 
+            let k = (turn + numPlay) % 2 // Keeps track of players turn 
 
             let sign = players[k].sign;
 
@@ -29,26 +27,28 @@ for(let i=0; i<Cells.length; i++)
             cellSign[i] = sign;
 
             let cW = checkWinner();
-
             if(cW)
-            {
-                turn = 10; // turn 10 means we finished the game
-                showWinner(players[cW-1].name);
+            {              
+                showGenericMessage(`${players[cW-1].name} has won!`)  
+                turn = 10; 
             }
-
+        }
+        if(turn==9)// At turn 9 there is the last move
+        {
+            showGenericMessage("It's a draw!")
         }
     });
 }
 
 function checkWinner()
 {
-    // array with possible victories
+    // Array with possible victories
     const winningPoss = [
         [0,1,2],[3,4,5],[6,7,8],
         [0,3,6],[1,4,7],[2,5,8],
         [0,4,8],[2,4,6],  
     ];
-    // check for each possibility if we have a winner
+    // Check for each possibility if we have a winner
     for(let i=0; i<winningPoss.length; i++)
     {
         const combination = winningPoss[i];
@@ -65,52 +65,34 @@ function checkWinner()
 
 function winner(w)
 {
-    // it controls wich player has won by checking the winnig sign
+    // Controls wich player has won by checking the winnig sign
     for(let i=0; i<2; i++)
     {
         if(w == players[i].sign)
         {
             players[i].score = players[i].score + 1;
-            updateScreenScore();
-            return i+1; // return 1 if player1 wins or 2 if player2 wins
+            ticTacToe_UpdateScreenScore();
+            return i+1; // Return 1 if player1 wins or 2 if player2 wins
         }
     }
 }
 
-function showWinner(wName) // it creates a div element that will show the winner's name
-{
-    let newDiv = document.createElement("div");
-    newDiv.innerHTML = `${wName} has won!`;
-    newDiv.classList.add("messageContainer");
-    newDiv.id = "mesCon";
-    GameArea.appendChild(newDiv);
-    msgFlag = 1;
-}
-
-function removeMessage() 
-{
-    const mesCon = document.getElementById("mesCon");
-    mesCon.parentNode.removeChild(mesCon);
-    msgFlag = 0;
-}
-
-
 function newGame()
 {
-    if(numPlay == 0) // set all parameters for the first game
+    if(numPlay == 0) // Set all parameters for the first game
     {
         numPlay ++;
-        NewGame.innerText = "New Game";
+        DOM_NewGame.innerText = "New Game";
         cellSign = [];
     }
-    else // reset all parameters for the next game
+    else // Reset all parameters for the next game
     {
         cellSign = [];
         turn = 0;
         numPlay ++;
     
-        for(let i=0; i<Cells.length; i++)
-            Cells[i].innerText = "";
+        for(let i=0; i<DOM_Cells.length; i++)
+            DOM_Cells[i].innerText = "";
         
         players[0].switchSign();
         players[1].switchSign();        
@@ -118,31 +100,30 @@ function newGame()
 
     for(let j=0; j<2; j++)
     {
-        if(Texts[j].value == "Insert name" || Texts[j].value == "")
+        if(DOM_Texts[j].value == "Insert name" || DOM_Texts[j].value == "")
         {
             players[j].name = `Player ${j+1}`;
-            Texts[j].value = players[j].name;
+            DOM_Texts[j].value = players[j].name;
         }
         else
         {
-            players[j].name = Texts[j].value; 
-            Texts[j].value = players[j].name;
+            players[j].name = DOM_Texts[j].value; 
+            DOM_Texts[j].value = players[j].name;
         }
             
     }
-    updateScreenScore();
-
+    ticTacToe_UpdateScreenScore();
 }
 
-function updateScreenScore()
+function ticTacToe_UpdateScreenScore()
 {
     for(let i=0; i<2; i++)
-        PlayerStatus[i].innerText = `Sign = ${players[i].sign} \nPoints = ${players[i].score}`; 
+        DOM_PlayerStatus[i].innerText = `Sign = ${players[i].sign} \nPoints = ${players[i].score}`; 
 }
 
-NewGame.addEventListener("click", function()
+DOM_NewGame.addEventListener("click", function()
 {  
-    flag = 1;
+    GameStartedFlag = 1;
     newGame();
     if(msgFlag)
         removeMessage();
@@ -150,7 +131,18 @@ NewGame.addEventListener("click", function()
 
 Reset.addEventListener("click", function() 
 {
-    players[0].score = 0;
-    players[1].score = 0;
-    newGame();
+    showGenericMessage("Game resetted");
+
+    for(let i=0; i<players.length; i++)
+    {
+        players[i].score = 0;
+        players[i].name = `Player ${i+4}`;
+    }
+    
+    setTimeout(() => {
+        GameStartedFlag = 1;
+        newGame();
+        if(msgFlag)
+            removeMessage();
+    }, 1000);  
 });

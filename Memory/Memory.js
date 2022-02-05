@@ -1,17 +1,15 @@
-/*=================== GAME =================== */
+/*=================== GAME STRUCTURE ===================*/
 const row = 4;
 const colums = 8;
 const cards = [`alien`, `bug`, `duck`, `rocket`, `spaceship`, `tiktac`];
 let deck = [...cards,...cards,...cards,...cards,`alien`, `bug`, `duck`, `rocket`, `alien`, `bug`, `duck`, `rocket`]
 let pick = [];
-let flag = 0; //this flag control if the game has started or not
-let msgFlag = 1; //this flag control if the message is on screen
 
-/*=================== PLAYERS =================== */
+/*=================== PLAYERS ===================*/
 
-let players = [new player(`P1`, `-`, 0), new player(`P2`, `-`, 0)];
+let players = [new playerClass(`P1`, `-`, 0), new player(`P2`, `-`, 0)];
 let currentPlayer = 0;
-/*=================== GAME LOGIC =================== */
+/*=================== GAME LOGIC ===================*/
 
 for(let i=0; i<deck.length; i++) // add cards to grid in game area
 {
@@ -19,17 +17,17 @@ for(let i=0; i<deck.length; i++) // add cards to grid in game area
     card.classList.add(`Card`);
     card.setAttribute(`data-card`, deck[i]);
     card.addEventListener(`click`, flipCard);
-    Grid.appendChild(card);
+    DOM_Grid.appendChild(card);
 }   
 
 updateScreenScore(players);
 shuffleDeck();
 
-Texts[currentPlayer].style.backgroundColor = "deeppink";
+DOM_Texts[currentPlayer].style.backgroundColor = "deeppink";
 
 function flipCard(e) {
     
-    if(flag)
+    if(GameStartedFlag)
     {
         const card = e.target;
         if(card.classList.contains(`flipped`))  return;
@@ -61,19 +59,19 @@ function checkMatch()
             card1.classList.remove( cardName1, `flipped`);
             card2.classList.remove( cardName2, `flipped`);
         }, 600);
-        Texts[currentPlayer].style.backgroundColor = "#0080FF";
+        DOM_Texts[currentPlayer].style.backgroundColor = "#0080FF";
         currentPlayer = (currentPlayer + 1) % 2;
-        Texts[currentPlayer].style.backgroundColor = "deeppink";
+        DOM_Texts[currentPlayer].style.backgroundColor = "deeppink";
         pick = [];
         return 0;
     }
     
 }
 
-NewGame.addEventListener("click", function()
+DOM_NewGame.addEventListener("click", function()
 {  
-    flag = 1;
-    NewGame.innerText = `New Game`;
+    GameStartedFlag = 1;
+    DOM_NewGame.innerText = `New Game`;
     newGame();
     if(msgFlag)
         removeMessage();
@@ -105,15 +103,15 @@ function newGame(){
     placeNewCards();
     for(let j=0; j<2; j++)
     {
-        if(Texts[j].value == "Insert name" || Texts[j].value == "")
+        if(DOM_Texts[j].value == "Insert name" || DOM_Texts[j].value == "")
         {
             players[j].name = `Player ${j+1}`;
-            Texts[j].value = players[j].name;
+            DOM_Texts[j].value = players[j].name;
         }
         else
         {
-            players[j].name = Texts[j].value; 
-            Texts[j].value = players[j].name;
+            players[j].name = DOM_Texts[j].value; 
+            DOM_Texts[j].value = players[j].name;
         }
             
     }
@@ -122,23 +120,23 @@ function newGame(){
 function checkWinner(){
     
     let k = 0;
-    const card = document.querySelectorAll(`.Card`);
+    const DOM_card = document.querySelectorAll(`.Card`);
 
     for(let i=0; i<deck.length; i++)
     {
-        if(card[i].classList.contains(`flipped`))
+        if(DOM_card[i].classList.contains(`flipped`))
             k++;
     }
     if(k<deck.length-1)
         return;
 
     if(players[0].score > players[1].score)
-            showWinner(players[0].name);
+        showGenericMessage(`${players[0].name} has won!`);
         else
         {
             if (players[1].score > players[0].score)
-                showWinner(players[1].name);
+                showGenericMessage(`${players[0].name} has won!`);
             else   
-                showWinner("It's a draw!");
+                showGenericMessage("It's a draw!");
         }
 }
