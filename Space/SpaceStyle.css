@@ -1,0 +1,53 @@
+:root{
+    --Dim: 50px;
+}
+.Game-Area{
+        
+    width: 800px;
+    height: 450px;
+    border: 5px solid aliceblue;
+    background-color: #0080FF; 
+}
+.Game-Data{
+    width: 190px;
+}
+
+.Game-Score{
+    width: 190px;
+}
+
+.messageContainer{
+    top: 180px;
+    bottom: 180px;
+    font-size: 30px;
+    color: aliceblue;
+}
+
+.messCon{
+    background-color: deeppink;
+}
+
+.space{
+    position: absolute;
+    margin: 0;
+    width: var(--Dim);
+    height: var(--Dim);
+    background-repeat: none;
+    background-size: contain;
+}
+
+.ship{
+    background-image: url("images/spaceship.png");
+}
+
+.laser{
+    background-image: url("images/laser.png");
+}
+
+.alien{
+    background-image: url("images/alien.png");
+}
+
+.boom{
+    background-image: url("images/boom.png");
+}

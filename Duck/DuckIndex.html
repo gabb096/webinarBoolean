@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gab's Runner Duck </title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../Common/Style.css">
+    <link rel="stylesheet" href="DuckStyle.css">
+</head>
+<body>
+    <div class="Container"> 
+        <img src="../Common/thumbs.png" alt="Thumbs" id="MainBanner">
+        <div class="Board">
+            <div class="Game-Data">
+                <h1>Rules:</h1>
+                <h2>Press the space bar to jump and avoid the obstacles!</h2>
+            </div>    
+            <div class="Game-Area">
+                <div id="mesCon" class="messageContainer">Welcome!</div>
+                <div class="duck"></div>
+                <div class="plant" ></div>
+            </div> 
+            <div class="Game-Score">
+                <h1>Score:</h1>
+                <br>
+                <textarea class="Text" maxlength="8">Insert name</textarea>
+                <h2 class="Player"></h2>
+                <br>
+                <h2 id="HighScore"></h2>
+                <br>
+                <h2 id="NewGame">Start Game</h2>
+            </div>
+        </div>
+    </div>
+    <script src="../Common/CommonScript.js"></script>
+    <script src="Duck.js"></script>
+</body>
+</html>
+
