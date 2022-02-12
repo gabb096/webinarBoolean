@@ -12,40 +12,42 @@
     <link rel="stylesheet" href="TicTacToeStyle.css">
 </head>
 <body>
-    <div class="Container">Tic Tac Toe</div>
-    <div class="Board">
-        <div class="Game-Data">
-            <h1>Rules:</h1>
-            <h1>Line up three equal symbols, horizontally, vertically or diagonally to win the game!<br>The player with the X sign will be the first to play.</h1>
-        </div>    
-        <div class="Game-Area">
-            <div id="Grid"> 
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-                <div class="Cell"></div>
-            </div>
-            <div id="mesCon" class="messageContainer">Welcome!</div>
-        </div> 
-        <div class="Game-Score">
-            <h2>Score:</h2>
-            <br>
-            <textarea class="Text" maxlength="12">Insert name</textarea>
-            <h2 class="Player"></h2>
-            <br>
-            <textarea class="Text" maxlength="12">Insert name</textarea>
-            <h2 class="Player"></h2>
-            <br>
-            <h2 id="NewGame">Start Game</h2>
-            <br>
-            <h2 id="Reset">Reset</h2>
-        </div>    
-    </div>
+    <div class="Container"> 
+        <img src="../Common/thumbs.png" alt="Thumbs" id="MainBanner">
+        <div class="Board">
+            <div class="Game-Data">
+                <h1>Rules:</h1>
+                <h1>Line up three equal symbols, horizontally, vertically or diagonally to win the game!<br>The player with the X sign will be the first to play.</h1>
+            </div>    
+            <div class="Game-Area">
+                <div id="Grid"> 
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                    <div class="Cell"></div>
+                </div>
+                <div id="mesCon" class="messageContainer">Welcome!</div>
+            </div> 
+            <div class="Game-Score">
+                <h2>Score:</h2>
+                <br>
+                <textarea class="Text" maxlength="12">Insert name</textarea>
+                <h2 class="Player"></h2>
+                <br>
+                <textarea class="Text" maxlength="12">Insert name</textarea>
+                <h2 class="Player"></h2>
+                <br>
+                <h2 id="NewGame">Start Game</h2>
+                <br>
+                <h2 id="Reset">Reset</h2>
+            </div>    
+        </div>
+    </div>    
     <script src="../Common/CommonScript.js"></script>
     <script src="TicTacToe.js"> </script>
 </body>

@@ -1,14 +1,17 @@
-:root{/* Mettere -- davanti ai nomi delle "variabili" */
+:root{
     --Main_BG_Color: #0080FF;
     --white: aliceblue;
     --pink: deeppink;
 }
 
 *{
-/* È buona norma fare questo come prima cosa perché ci da pieno controllo di come posizioniamo ogni oggetto*/  
     margin: 0px;
     border: 0px;
     box-sizing: 0px;
+}
+
+#MainBanner:hover{
+    cursor: pointer;
 }
 
 body{
@@ -30,7 +33,7 @@ body{
 }
 
 img{
-    max-width: 100%;/* questo fa si che le immagini non siano mai più grandi del contenitore*/
+    max-width: 100%;
 }
 
 ul{
@@ -70,7 +73,7 @@ textarea{
     outline: none;
 }
 
-/* STRUTTURA PAGINE GIOCHI */
+/* GAME STRUCTURE */
 
 .Board{
     display: flex;

@@ -50,7 +50,6 @@ const gameAreaWidth = DOM_GameArea.clientWidth - 50;
 const gameAreaHeight = DOM_GameArea.clientHeight - 50;
 const DOM_Bug = document.querySelector(".Bug");
 const DOM_Time = document.getElementById("Time");
-const DOM_HighScore = document.getElementById("HighScore");
 
 let BugFlag = 0;     // Indicates if the bug is "clickable"
 let newGameFlag = 1; // In case the player hits the new game "button" multiple times

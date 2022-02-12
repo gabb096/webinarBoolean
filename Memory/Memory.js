@@ -7,7 +7,7 @@ let pick = [];
 
 /*=================== PLAYERS ===================*/
 
-let players = [new playerClass(`P1`, `-`, 0), new player(`P2`, `-`, 0)];
+let players = [new playerClass(`P1`, `-`, 0), new playerClass(`P2`, `-`, 0)];
 let currentPlayer = 0;
 /*=================== GAME LOGIC ===================*/
 

@@ -4,6 +4,8 @@ const DOM_PlayerStatus = document.querySelectorAll(".Player");
 const DOM_GameArea = document.querySelector(".Game-Area");
 const DOM_NewGame = document.getElementById("NewGame");
 const DOM_Grid = document.getElementById(`Grid`);
+const DOM_MainBanner = document.getElementById(`MainBanner`);
+const DOM_HighScore = document.getElementById("HighScore");
 
 let GameStartedFlag = 0; //control if the game has started or not
 let msgFlag = 1; // control if the message is on screen
@@ -71,4 +73,11 @@ function showGenericTimeMessage(string, milliseconds)
 {   
     showGenericMessage(string);
     setTimeout(() => {  removeMessage();   }, milliseconds);
+}
+
+DOM_MainBanner.addEventListener("click", function() {  window.location.href = "../Index.html"; });
+
+function dist(x1,x2,y1,y2) // euclidean distance between the points (x1,y1) and (x2,y2)
+{
+    return Math.sqrt( (x2-x1)**2 + (y2-y1)**2 );
 }
